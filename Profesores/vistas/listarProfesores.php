@@ -16,34 +16,27 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            if(!empty($datos)) {
-                while ($fila = $datos->fetch_assoc()){ ?>
-                    <tr>
-                        <td>
-                            <?php echo $fila['nombre']; ?>
-                        </td>
-                        
-                        <td>
-                            <div class="contenedor-acciones">
-                                <form class="form-accion enlacesFormulario" action="index.php?c=ProfesorControlador&m=mostrarEditar" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
-                                    <input type="submit" value="Editar" class="btn btn-editar">
-                                </form>
+            <?php if (!empty($datos)) { ?>
+    <?php foreach ($datos as $fila) { ?>
+        <tr>
+            <td><?php echo $fila['nombre']; ?></td>
+            <td>
+                <form action="index.php?c=ProfesorControlador&m=mostrarEditar" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
+                    <input type="submit" value="Editar">
+                </form>
 
-                                <form class="form-accion enlacesFormulario" action="index.php?c=ProfesorControlador&m=confirmarEliminar" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
-                                    <input type="submit" value="Eliminar" class="btn btn-eliminar">
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                <?php
-                }
-            }else{
-                echo "<p>No hay datos en la base de datos</p>";
-            }           
-            ?>
+                <form action="index.php?c=ProfesorControlador&m=confirmarEliminar" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
+                    <input type="submit" value="Eliminar">
+                </form>
+            </td>
+        </tr>
+    <?php } ?>
+<?php } else { ?>
+    <tr><td colspan="2">No hay datos</td></tr>
+<?php } ?>
+
         </tbody>
     </table> 
 </body>
