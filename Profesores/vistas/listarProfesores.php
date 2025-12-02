@@ -6,13 +6,8 @@
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-
     <h1>Profesores</h1>
-
-    <a href="index.php?c=ProfesorControlador&m=mostrarCrear" class="boton-anadir">
-        Añadir Profesor
-    </a>
-
+    <a href="index.php?c=ProfesorControlador&m=mostrarCrear" class="boton-anadir">Añadir Profesor</a>
     <table class="tabla-datos">
         <thead>
             <tr>
@@ -48,3 +43,4 @@
     </table>
 </body>
 </html>
+
