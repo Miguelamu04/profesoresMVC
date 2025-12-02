@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Profesores</h1>
-    <a href="crear.php" class="boton-anadir">Añadir Profesor</a>   
+    <a href="crear.php" class="boton-anadir">Añadir Profesor</a>
     <table class="tabla-datos">
         <thead>
             <tr>
@@ -16,36 +16,31 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            if(!empty($datos)) {
-                while ($fila = $datos->fetch_assoc()){ ?>
+            <?php if (!empty($datos)) { ?>               
+                <?php foreach ($datos as $fila) { ?>
                     <tr>
-                        <td>
-                            <?php echo $fila['nombre']; ?>
-                        </td>
-                        
+                        <td><?php echo $fila['nombre']; ?></td>
                         <td>
                             <div class="contenedor-acciones">
-                                <form class="form-accion enlacesFormulario" action="modificar.php" method="POST">
+                                <form action="modificar.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
                                     <input type="submit" value="Editar" class="btn btn-editar">
                                 </form>
-
-                                <form class="form-accion enlacesFormulario" action="confirmarEliminar.php" method="POST">
+                                <form action="confirmarEliminar.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
                                     <input type="submit" value="Eliminar" class="btn btn-eliminar">
                                 </form>
                             </div>
                         </td>
                     </tr>
-                <?php
-                }
-            }else{
-                echo "<p>No hay datos en la base de datos</p>";
-            }           
-            ?>
+                <?php } ?>
+
+            <?php } else { ?>
+                <tr>
+                    <td colspan="2">No hay datos en la base de datos</td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
-    
 </body>
 </html>
