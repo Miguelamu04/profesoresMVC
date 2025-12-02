@@ -17,26 +17,25 @@
         </thead>
         <tbody>
             <?php if (!empty($datos)) { ?>
-    <?php foreach ($datos as $fila) { ?>
-        <tr>
-            <td><?php echo $fila['nombre']; ?></td>
-            <td>
-                <form action="index.php?c=ProfesorControlador&m=mostrarEditar" method="POST">
-                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
-                    <input type="submit" value="Editar">
-                </form>
+            <?php foreach ($datos as $fila) { ?>
+                <tr>
+                    <td><?php echo $fila['nombre']; ?></td>
+                    <td>
+                        <form action="index.php?c=ProfesorControlador&m=mostrarEditar" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
+                            <input type="submit" value="Editar">
+                        </form>
 
-                <form action="index.php?c=ProfesorControlador&m=confirmarEliminar" method="POST">
-                    <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
-                    <input type="submit" value="Eliminar">
-                </form>
-            </td>
-        </tr>
-    <?php } ?>
-<?php } else { ?>
-    <tr><td colspan="2">No hay datos</td></tr>
-<?php } ?>
-
+                        <form action="index.php?c=ProfesorControlador&m=confirmarEliminar" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $fila['idProfesor']; ?>">
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
+        <?php } else { ?>
+            <tr><td colspan="2">No hay datos</td></tr>
+        <?php } ?>
         </tbody>
     </table> 
 </body>
