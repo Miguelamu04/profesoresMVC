@@ -11,7 +11,8 @@ class Profesor{
     public function obtenerProfesores(){
         $sql = "SELECT * FROM profesores";
         $resultado = $this->conexion->query($sql);
-        return $resultado;
+        $datos = $resultado->fetch_all(MYSQLI_ASSOC);
+        return $datos;
     }
 
     public function obtenerPorId($id){
@@ -36,3 +37,4 @@ class Profesor{
         $this->conexion->query($sql);
     }
 }
+
