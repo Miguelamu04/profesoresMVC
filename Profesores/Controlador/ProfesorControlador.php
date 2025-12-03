@@ -10,13 +10,8 @@ class ProfesorControlador{
     }
 
     public function listar() {
-        $resultado = $this->modelo->obtenerProfesores();
-        $datos = [];
-        while ($fila = $resultado->fetch_assoc()) {
-            $datos[] = $fila;
-        }
         $this->nombreVista = "listarProfesores";
-        return $datos;
+        return $this->datos = $this->modelo->obtenerProfesores();
     }
 
     public function mostrarCrear(){
@@ -60,4 +55,5 @@ class ProfesorControlador{
         return $datos;
     }
 }
+
 
